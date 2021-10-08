@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+.loginInput {
+  display: flex;
+  justify-content: center;
+}
+
+.loginInput input {
+  width: 150px;
+  height: 35px;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+::placeholder {
+  color: #ccc;
+}
