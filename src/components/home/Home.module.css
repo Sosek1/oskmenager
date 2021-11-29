@@ -1,0 +1,13 @@
+.body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(209, 181, 181);
+}
+
+.p {
+  font-size: 35px;
+  margin-left: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #000;
+}

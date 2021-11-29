@@ -1,22 +1,26 @@
 import React, { useRef } from "react";
-import classes from "./LoginInput.module.css";
+import classes from "./input.module.css";
 
-const LoginInput = React.forwardRef((props, ref) => {
+const Input = React.forwardRef((props, ref) => {
   const inputRef = useRef();
 
   return (
-    <div className={classes["loginInput"]}>
+    <div
+      className={`${classes.loginInput} ${
+        props.isValid === false ? classes.invalid : ""
+      }`}
+    >
       <input
         ref={inputRef}
         type={props.type}
         id={props.id}
         value={props.value}
         onChange={props.onChange}
-        onBlur={props.onBlur}
         placeholder={props.placeholder}
+        className={props.onCheck ? "" : classes["blur"]}
       ></input>
     </div>
   );
 });
 
-export default LoginInput;
+export default Input;

@@ -1,24 +1,35 @@
 import { useRef, useState, useReducer, useEffect, useContext } from "react";
-import AuthContext from "../../store/auth-context";
-import Input from "../UI/LoginInput";
+import AuthContext from "../../store/login-context";
+import Input from "../UI/Input";
 import classes from "./Login.module.css";
 
 const emailReducer = (state, action) => {
+  const emailValidation = (value) => {
+    const regex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return regex.test(value);
+  };
   if (action.type === "USER_INPUT") {
-    return { value: action.value, isValid: action.value.includes("@") };
+    return { value: action.value, isValid: emailValidation(action.value) };
   }
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+    return { value: state.value, isValid: emailValidation(state.value) };
   }
   return { value: "", isValid: false };
 };
 
 const passwordReducer = (state, action) => {
+  const passwordValidation = (value) => {
+    const regex =
+      // /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+      /[a-z]/;
+    return regex.test(value);
+  };
   if (action.type === "USER_INPUT") {
-    return { value: action.value, isValid: action.value.trim().length > 6 };
+    return { value: action.value, isValid: passwordValidation(action.value) };
   }
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.trim().length > 6 };
+    return { value: state.value, isValid: passwordValidation(state.value) };
   }
   return { value: "", isValid: false };
 };
@@ -28,12 +39,12 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
-    isValid: false,
+    isValid: null,
   });
 
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
-    isValid: false,
+    isValid: null,
   });
 
   const authCtx = useContext(AuthContext);
@@ -91,7 +102,7 @@ const Login = (props) => {
         isValid={emailIsValid}
         value={emailState.value}
         onChange={emailChangeHandler}
-        onBlur={validateEmailHandler}
+        onCheck={emailIsValid}
         placeholder="Login"
       />
       <Input
@@ -101,10 +112,12 @@ const Login = (props) => {
         isValid={passwordIsValid}
         value={passwordState.value}
         onChange={passwordChangeHandler}
-        onBlur={validatePasswordHandler}
+        onCheck={passwordIsValid}
         placeholder="Hasło"
       />
-      <button type="submit">Zaloguj</button>
+      <button className={classes.button} type="submit">
+        Zaloguj
+      </button>
     </form>
   );
 };

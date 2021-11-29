@@ -1,0 +1,26 @@
+.menuBar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+
+p {
+  font-size: 40px;
+  color: #fff;
+  margin-left: 50px;
+}
+
+.logout {
+  font-size: 20px;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

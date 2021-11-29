@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const AuthContext = React.createContext({
+const LoginContext = React.createContext({
   isLoggedIn: false,
   onLogout: () => {},
   onLogin: (email, password) => {},
 });
 
-export const AuthContextProvider = (props) => {
+export const LoginContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const logoutHandler = () => {
@@ -18,7 +18,7 @@ export const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider
+    <LoginContext.Provider
       value={{
         isLoggedIn: isLoggedIn,
         onLogout: logoutHandler,
@@ -26,8 +26,8 @@ export const AuthContextProvider = (props) => {
       }}
     >
       {props.children}
-    </AuthContext.Provider>
+    </LoginContext.Provider>
   );
 };
 
-export default AuthContext;
+export default LoginContext;
