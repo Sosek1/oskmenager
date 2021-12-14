@@ -7,6 +7,7 @@ const AddRideForm2 = () => {
   const [userInput, setUserInput] = useState({
     name: "",
     hour: "",
+    key:0,
   });
 
   const ctx = useContext(RidesContext);
@@ -28,11 +29,12 @@ const AddRideForm2 = () => {
     const rideData = {
       name: userInput.name,
       hour: userInput.hour,
+      key: Math.floor(Math.random() * 100)
     };
 
-    ctx.onAdd(rideData.name, rideData.hour);
-    console.log(userInput);
-    console.log(ctx.ridesList);
+    ctx.onAdd(rideData);
+    // console.log(userInput);
+    // console.log(ctx.ridesList);
   };
 
   return (
@@ -47,7 +49,7 @@ const AddRideForm2 = () => {
         value={userInput.hour}
         onChange={hourHandler}
       ></Input>
-      <button className={classes.addRideFormButton}>Dodaj</button>
+      <button type="submit" className={classes.addRideFormButton}>Dodaj</button>
     </form>
   );
 };

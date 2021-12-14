@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const RidesContext = React.createContext({
   ridesList: {},
-  onAdd: (name, hour) => {},
+  onAdd: (data) => {},
   onDelete: () => {},
 });
 
@@ -11,22 +11,29 @@ export const RidesContextProvider = (props) => {
     {
       hour: "12:00",
       name: "Jan",
+      key:1,
     },
     {
       hour: "12:00",
       name: "Bartek ",
+      key:2
     },
     {
       hour: "12:00",
       name: "Kamil",
+      key:3
     },
   ]);
 
-  const addRideHandler = (name, hour) => {
+  
+
+  const addRideHandler = (data) => {
     setRides((prevRides) => {
-      return { ...prevRides, hour: hour, name: name };
+      return [...prevRides, data]
     });
+    
   };
+  console.log(rides)
 
   return (
     <RidesContext.Provider

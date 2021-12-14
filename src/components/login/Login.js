@@ -57,7 +57,7 @@ const Login = (props) => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log("Checking form validity");
+      // console.log("Checking form validity");
       setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
     return () => {
@@ -69,17 +69,17 @@ const Login = (props) => {
     dispatchEmail({ type: "USER_INPUT", value: event.target.value });
   };
 
-  const validateEmailHandler = () => {
-    dispatchEmail({ type: "INPUT_BLUR" });
-  };
+  // const validateEmailHandler = () => {
+  //   dispatchEmail({ type: "INPUT_BLUR" });
+  // };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: "USER_INPUT", value: event.target.value });
   };
 
-  const validatePasswordHandler = () => {
-    dispatchPassword({ type: "INPUT_BLUR" });
-  };
+  // const validatePasswordHandler = () => {
+  //   dispatchPassword({ type: "INPUT_BLUR" });
+  // };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -88,8 +88,8 @@ const Login = (props) => {
     } else {
       alert("Niepoprawne dane");
     }
-    console.log(authCtx.isLoggedIn);
-    console.log(formIsValid);
+    // console.log(authCtx.isLoggedIn);
+    // console.log(formIsValid);
   };
 
   return (
