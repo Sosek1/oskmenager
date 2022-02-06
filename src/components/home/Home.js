@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Menu from "../UI/Menu";
 import Button from "../UI/Button";
 import DateChangeBox from "./DataChange/DateChangeBox";
 import classes from "./Home.module.css";
 import RidesListContainer from "./RidesList/RidesListContainer";
-import AddRideForm2 from "./AddRide/AddRideForm2";
-// import AddRideForm from "./AddRide/AddRideForm2";
+import AddRideForm from "./AddRide/AddRideForm";
+import RideInfo from "./RideInfo/RideInfo";
+import EditRideForm from "./EditRide/EditRideForm"
 import { RidesContextProvider } from "../../store/rides-context";
+
 const Home = () => {
   const [showForm, setShowForm] = useState(false);
-
-  const showModalHandler = () => {
-    setShowForm(!showForm);
-  };
+  const [showInfo, setShowInfo] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
+  
 
   return (
     <>
@@ -20,12 +21,13 @@ const Home = () => {
       <p className={classes.p}>Cześć, Adam</p>
       <Button text="Dzień" />
       <DateChangeBox />
-      <RidesListContainer />
-      {/* {showForm && <AddRideForm />} */}
       <RidesContextProvider>
-        {showForm && <AddRideForm2 />}
+      <RidesListContainer info={() => setShowInfo(!showInfo)} edit={() => setShowEdit(!showEdit)}/>
+        {showForm && <AddRideForm showForm={() => setShowForm(!showForm)}/>}
+      {showInfo && <RideInfo hideInfo={() => setShowInfo(!showInfo)}/>}
+      {showEdit && <EditRideForm hideEdit={() => setShowEdit(!showEdit)}/>}
       </RidesContextProvider>
-      <Button onClick={showModalHandler} text={"Dodaj jazde"}></Button>
+      <Button onClick={() => setShowForm(!showForm)} text={"Dodaj jazde"}></Button>
     </>
   );
 };

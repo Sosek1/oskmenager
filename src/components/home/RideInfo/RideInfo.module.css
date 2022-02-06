@@ -1,0 +1,42 @@
+.infoContainer{
+    width:400px;
+    height:400px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.infoWrapper{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-around;
+    flex-basis: 90%;
+}
+
+.close{
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-right: 10px;
+    align-self: end;
+    flex-basis: 10%;
+    font-size:20px;
+    color:#fff;
+    cursor: pointer;
+  }
+
+  .InformationParagraph{
+    margin:0;
+    font-size: 20px;
+    color:#fff;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #fff;
+}

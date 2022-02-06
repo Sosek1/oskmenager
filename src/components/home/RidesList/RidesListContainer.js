@@ -4,12 +4,11 @@ import RidesList from "./RidesList";
 import classes from "./RidesListContainer.module.css";
 
 const RidesListContainer = (props) => {
+
   return (
-    <RidesContextProvider>
       <div className={classes.container}>
-        <RidesList />
+        <RidesList info={props.info} edit={props.edit}/>
       </div>
-    </RidesContextProvider>
   );
 };
 

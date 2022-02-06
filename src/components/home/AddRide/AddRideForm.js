@@ -1,35 +1,59 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useContext } from "react";
 import Input from "../../UI/Input";
-import Button from "../../UI/Button";
 import classes from "./AddRideForm.module.css";
-
-const Backdrop = (props) => {
-  return <div className={classes.backdrop} />;
-};
-
-const Modal = (props) => {
-  return (
-    <form className={classes.addRideFormContainer}>
-      <Input className={classes.addRideFormInput}></Input>
-      <Input className={classes.addRideFormInput}></Input>
-      <Button className={classes.addRideFormButton}>Dodaj</Button>
-    </form>
-  );
-};
+import RidesContext from "../../../store/rides-context";
 
 const AddRideForm = (props) => {
+  const [userName, setUserName] = useState("")
+
+  const [hour, setHour] = useState("")
+
+  const ctx = useContext(RidesContext);
+  
+  const nameHandler = (e) => {
+    setUserName(e.target.value)
+  };
+
+  const hourHandler = (e) => {
+    setHour(e.target.value)
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    
+    const rideData = {
+      name: userName,
+      hour: hour,
+      key: Math.floor(Math.random()*100),
+      id: Math.floor(Math.random()*100).toString()
+    };
+    setUserName("")
+    setHour("")
+    if(userName !== "" && hour !== ""){
+      ctx.onAdd(rideData);
+      props.showForm(false)
+    }else{
+      alert("Niepoprawne dane")
+    }
+  };
+
   return (
-    <>
-      {ReactDOM.createPortal(
-        <Backdrop />,
-        document.getElementById("backdrop-root")
-      )}
-      {ReactDOM.createPortal(
-        <Modal />,
-        document.getElementById("overlay-root")
-      )}
-    </>
+    <form className={classes.addRideFormContainer} onSubmit={submitHandler}>
+      <p onClick={props.showForm} className={classes.close}>X</p>
+      <Input
+        className={classes.addRideFormInput}
+        value={userName}
+        placeholder = "Imię"
+        onChange={nameHandler}
+      ></Input>
+      <Input
+        className={classes.addRideFormInput}
+        value={hour}
+        placeholder = "Godzina"
+        onChange={hourHandler}
+      ></Input>
+      <button type="submit" onClose={props.showForm}className={classes.addRideFormButton} >Dodaj</button>
+    </form> 
   );
 };
 

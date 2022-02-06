@@ -1,0 +1,45 @@
+.editContainer{
+    width:400px;
+    height:400px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.editWrapper{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-basis: 90%;
+}
+
+.close{
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-right: 10px;
+    align-self: end;
+    flex-basis: 10%;
+    font-size:20px;
+    color:#fff;
+    cursor: pointer;
+  }
+
+  .editButton{
+    width: 140px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+  }

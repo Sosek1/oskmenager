@@ -35,3 +35,11 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.options p{
+  margin:0;
+  font-size: 15px;
+  font-weight: bold;
+  color:#000;
+  cursor: pointer;
+}
