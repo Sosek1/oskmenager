@@ -13,13 +13,12 @@ const Home = () => {
   const [showForm, setShowForm] = useState(false);
   const [showInfo, setShowInfo] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
-  
+
 
   return (
     <>
       <Menu />
       <p className={classes.p}>Cześć, Adam</p>
-      <Button text="Dzień" />
       <DateChangeBox />
       <RidesContextProvider>
       <RidesListContainer info={() => setShowInfo(!showInfo)} edit={() => setShowEdit(!showEdit)}/>

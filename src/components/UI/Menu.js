@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import AuthContext from "../../store/login-context";
 import classes from "./Menu.module.css";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
 function Menu() {
@@ -9,9 +10,7 @@ function Menu() {
   return (
     <div className={classes.menuBar}>
       <p>Logo</p>
-      <p className={classes.logout} onClick={() => authCtx.onLogout()}>
-        Wyloguj się
-      </p> 
+      <ExitToAppIcon  style={{color:'white',marginRight:'50px', cursor:'pointer'}}onClick={() => authCtx.onLogout()}/>
     </div>
   );
 }

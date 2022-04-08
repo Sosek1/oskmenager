@@ -14,18 +14,21 @@ export const RidesContextProvider = (props) => {
     {
       hour: "12:00",
       name: "Jan",
+      surname:"Kowalski",
       key:1,
       id:"0"
     },
     {
       hour: "12:00",
       name: "Bartek ",
+      surname:"Pawłowski",
       key:2,
       id:"1"
     },
     {
       hour: "12:00",
       name: "Kamil",
+      surname:"Nowak",
       key:3,
       id:"2"
     },
@@ -54,18 +57,20 @@ export const RidesContextProvider = (props) => {
     setRides((prevRides) => {
       if (activeRidesId == 0){
         return [
-          {hour:data.hour, name:data.name, key:rides[activeRidesId].key, id:rides[activeRidesId].id},
+          {hour:data.hour, name:data.name, surname:data.surname, key:rides[activeRidesId].key, id:rides[activeRidesId].id},
           ...rides.slice(1)
         ]
       } else{
         return[
           ...rides.slice(0,activeRidesId),
-          {hour:data.hour, name:data.name, key:rides[activeRidesId].key, id:rides[activeRidesId].id},
+          {hour:data.hour, name:data.name, surname:data.surname, key:rides[activeRidesId].key, id:rides[activeRidesId].id},
           ...rides.slice(activeRidesId+1)
         ] 
       }
     }) 
   }
+
+  console.log(rides)
   
   return (
     <RidesContext.Provider

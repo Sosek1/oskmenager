@@ -17,7 +17,7 @@ const RidesList = (props) => {
   return (
     <ul className={classes.container}>
       {rideCtx.ridesList.map((ride) => (
-        <Ride hour={ride.hour} name={ride.name} key={ride.key} id={ride.id} onDelete={() => deleteHandler(ride.id)} info={props.info} infoId={()=>rideIdHandler(ride.id)} edit={props.edit}/>
+        <Ride hour={ride.hour} name={ride.name} surname={ride.surname} key={ride.key} id={ride.id} onDelete={() => deleteHandler(ride.id)} info={props.info} infoId={()=>rideIdHandler(ride.id)} edit={props.edit}/>
       ))}
     </ul>
   );

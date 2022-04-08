@@ -63,7 +63,7 @@ const Login = (props) => {
     return () => {
       clearTimeout(identifier);
     };
-  }, [emailIsValid, passwordIsValid]);
+  }, [ ]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", value: event.target.value });
